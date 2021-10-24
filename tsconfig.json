@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "ES5",
+    "target": "es2015",
+    "module": "CommonJS",
     "noEmitOnError": true,
     "strict": true,
     "esModuleInterop": true
   },
   "files": [
     "src/app.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
   ]
 }

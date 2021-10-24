@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "main": "dist/app.js",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "build": "npx tsc",
     "dev": "npx ts-node src/app.ts",
