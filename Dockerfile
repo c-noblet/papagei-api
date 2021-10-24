@@ -3,11 +3,13 @@ FROM node:16-alpine
 WORKDIR /home/node/papagei-api/
 
 COPY . .
+VOLUME /home/node/papagei-api/dist
 
-EXPOSE 80
+EXPOSE 8080
 
 RUN apk update
 RUN yarn install
-RUN yarn run build
 
-ENTRYPOINT yarn run start
+USER node
+
+CMD [ "npx", "pm2-runtime", "start", "dist/app.js" ]
