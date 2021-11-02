@@ -15,10 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag papagei-api:latest
+      run: docker build . --file Dockerfile --tag ghcr.io/c-noblet/papagei-api:latest
 
     - name: Run Container
-      run: docker run -d -p 8080:8080 --name papagei-api papagei-api:latest
+      run: docker run -d -p 8080:8080 --name papagei-api ghcr.io/c-noblet/papagei-api:latest
 
     - name: Run tests
       run: docker exec papagei-api yarn run test
+
+    - name: Push Docker image
+      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u c-noblet --password-stdin
+      run: docker push ghcr.io/c-noblet/papagei-api:latest
