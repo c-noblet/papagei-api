@@ -23,6 +23,8 @@ jobs:
     - name: Run tests
       run: docker exec papagei-api yarn run test
 
-    - name: Push Docker image
+    - name: Docker repository login
       run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u c-noblet --password-stdin
-      run: docker push ghcr.io/c-noblet/papagei-api:latest
+      
+    - name: Push Docker image in repository
+     run: docker push ghcr.io/c-noblet/papagei-api:latest
