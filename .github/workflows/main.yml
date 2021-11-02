@@ -21,4 +21,4 @@ jobs:
       run: docker run -d -p 8080:8080 -v $PWD/dist:/home/node/papagei-api/dist --name papagei-api papagei-api:latest
 
     - name: Run tests
-      run: docker exec -it papagei-api yarn run test
+      run: docker exec papagei-api yarn run test
