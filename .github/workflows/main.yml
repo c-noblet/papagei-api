@@ -18,7 +18,7 @@ jobs:
       run: docker build . --file Dockerfile --tag papagei-api:latest
 
     - name: Run Container
-      run: docker run -d -p 8080:8080 -v $PWD/dist:/home/node/papagei-api/dist --name papagei-api papagei-api:latest
+      run: docker run -d -p 8080:8080 --name papagei-api papagei-api:latest
 
     - name: Run tests
       run: docker exec papagei-api yarn run test
