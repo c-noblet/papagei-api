@@ -6,11 +6,11 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "start": "npx pm2 start dist/app.js",
+    "start": "node dist/app.js",
     "dev": "npx tsc && node .",
     "test": "npx ava",
-    "docker:build": "docker build -t papagei-api .",
-    "docker:start": "docker run -p 8083:8083 -v $PWD/dist:/home/node/papagei-api/dist --name papagei-api papagei-api"
+    "docker:build": "yarn run build && docker build -t ghcr.io/c-noblet/papagei-api .",
+    "docker:start": "docker run -d -e VIRTUAL_HOST=papagei-api.cn-8-77.net -p 8080:8080 -v $PWD/dist:/home/node/papagei-api/dist --name papagei-api ghcr.io/c-noblet/papagei-api"
   },
   "repository": {
     "type": "git",

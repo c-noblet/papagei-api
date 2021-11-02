@@ -4,4 +4,4 @@ node_modules
 .github
 test
 Dockerfile
-dist
+.env
