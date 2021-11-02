@@ -8,6 +8,7 @@ EXPOSE 8080
 
 RUN apk update
 RUN yarn install
+RUN yarn run build
 
 USER node
 
