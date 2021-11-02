@@ -27,4 +27,4 @@ jobs:
       run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u c-noblet --password-stdin
       
     - name: Push Docker image in repository
-     run: docker push ghcr.io/c-noblet/papagei-api:latest
+      run: docker push ghcr.io/c-noblet/papagei-api:latest
