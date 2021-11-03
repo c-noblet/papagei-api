@@ -23,8 +23,20 @@ jobs:
     - name: Run tests
       run: docker exec papagei-api yarn run test
 
-    - name: Docker repository login
-      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u c-noblet --password-stdin
+    - name: Login to Github Packages
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: c-noblet
+        password: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Push Docker image in repository
+      uses: docker/build-push-action@v2
+      with:
+        # relative path to the place where source code with Dockerfile is located
+        context: ./
+        # Note: tags has to be all lower-case
+        tags: ghcr.io/c-noblet/papagei-api:latest
+        # build on feature branches, push only on main branch
+        push: ${{ github.ref == 'refs/heads/main' }}
       run: docker push ghcr.io/c-noblet/papagei-api:latest
