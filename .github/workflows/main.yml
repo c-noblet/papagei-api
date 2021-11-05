@@ -47,4 +47,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: ./scripts/deploy.sh
+        script: docker rm -f papagei-api \
+          && docker pull ghcr.io/c-noblet/papagei-api:latest \
+          && docker run -d -e -p 8080:8080 --name papagei-api ghcr.io/c-noblet/papagei-api:latest
