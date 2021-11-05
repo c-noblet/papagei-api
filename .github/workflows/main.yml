@@ -39,3 +39,12 @@ jobs:
         tags: ghcr.io/c-noblet/papagei-api:latest
         # build on feature branches, push only on main branch
         push: ${{ github.ref == 'refs/heads/develop' }}
+
+    - name: Production Pull
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: ./scripts/deploy.sh
