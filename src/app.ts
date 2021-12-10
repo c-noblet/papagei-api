@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import http from 'http';
 import https from 'https';
 import path from 'path';
 import fs from 'fs';
@@ -29,11 +30,11 @@ try {
 
   /* Start the API */
   const app = setApi(player);
-  const server = https.createServer(credentials, app);
-  
-  server.listen(process.env.PORT, () => {
-    console.log(`Listen on : https://localhost:${process.env.PORT}`);
-  });
+  const httpServer = http.createServer(app);
+  const httpsServer = https.createServer(credentials, app);
+
+  httpServer.listen(8080);
+  httpsServer.listen(8443);
 
 } catch (err) {
   console.error(err);
