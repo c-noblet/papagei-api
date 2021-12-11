@@ -32,4 +32,4 @@ jobs:
         # Note: tags has to be all lower-case
         tags: ghcr.io/c-noblet/papagei-api:latest
         # build on feature branches, push only on main branch
-        push: ${{ github.ref == 'refs/heads/develop' }}
+        push: true
