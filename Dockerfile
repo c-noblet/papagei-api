@@ -7,6 +7,7 @@ COPY . .
 EXPOSE 8080
 
 RUN apk update
+RUN apk add ffmpeg
 RUN yarn install
 RUN yarn run build
 

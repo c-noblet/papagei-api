@@ -10,8 +10,8 @@
     "test": "npx ava",
     "docker:pull": "docker pull ghcr.io/c-noblet/papagei-api:latest",
     "docker:build": "docker build -t ghcr.io/c-noblet/papagei-api .",
-    "docker:start": "docker run -d -e VIRTUAL_HOST=papagei-api.cn-8-77.net -p 8080:8080 --name papagei-api ghcr.io/c-noblet/papagei-api",
-    "docker:dev": "docker run -p 8080:8080 --name papagei-api ghcr.io/c-noblet/papagei-api",
+    "docker:start": "docker run -e VIRTUAL_HOST=papagei-api.cn-8-77.net -p 8080:8080 --name papagei-api ghcr.io/c-noblet/papagei-api",
+    "docker:dev": "docker run -p 8080:8080 --name papagei-api --env-file .env ghcr.io/c-noblet/papagei-api:latest",
     "release": "./release.sh"
   },
   "repository": {

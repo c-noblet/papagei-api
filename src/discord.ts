@@ -15,7 +15,7 @@ export default (player: Player) => {
       /* Join voice channel */
       if(message.content === '!p join') {
         
-        if (message.member && message.member.voice.channel && message.guild) {
+        if (message.member && message.member.voice.channel && message.guild) {
           const connection = joinVoiceChannel({
             channelId: message.member.voice.channel.id,
             guildId: message.guild.id,
