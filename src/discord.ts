@@ -19,6 +19,7 @@ export default (player: Player) => {
           const connection = joinVoiceChannel({
             channelId: message.member.voice.channel.id,
             guildId: message.guild.id,
+            // @ts-ignore https://github.com/discordjs/voice/issues/166
             adapterCreator: message.guild.voiceAdapterCreator
           });
 
