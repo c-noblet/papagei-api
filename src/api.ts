@@ -10,7 +10,7 @@ export default (player: Player): Application => {
   app.use(express.json());
 
   /* Set up Player route */
-  app.use('/player', playerRouter(player));
+  app.use('/play', playerRouter(player));
 
   app.use('/info', infoRouter());
 
