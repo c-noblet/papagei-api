@@ -7,7 +7,6 @@ import setApi from './api';
 /* Discord Player initialisation */
 const player = new Player();
 
-
 try {
 
   /* Start the discord bot */
