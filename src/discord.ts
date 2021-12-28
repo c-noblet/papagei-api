@@ -16,6 +16,7 @@ export default (player: Player) => {
       if(message.content === '!p join') {
         
         if (message.member && message.member.voice.channel && message.guild) {
+          
           const connection = joinVoiceChannel({
             channelId: message.member.voice.channel.id,
             guildId: message.guild.id,
@@ -23,8 +24,17 @@ export default (player: Player) => {
             adapterCreator: message.guild.voiceAdapterCreator
           });
 
+          const channel = message.member.voice.channel;
+
           /* Set connection in discord player */
           player.setConnection(connection);
+          
+          const exitInterval = setInterval(() => {
+            if (channel.members.size <= 1) {
+              connection.disconnect();
+              clearInterval(exitInterval);
+            }
+          }, 10000);
         }
         message.delete();
       }
